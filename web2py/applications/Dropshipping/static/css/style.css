@@ -1,0 +1,12 @@
+@charset "UTF-8";
+/* CSS Document */
+
+#product-carousel .item{
+    margin: 3px;
+}
+
+#product-carousel .item img{
+	display: block;
+	width: 100%;
+	height: auto;
+}
