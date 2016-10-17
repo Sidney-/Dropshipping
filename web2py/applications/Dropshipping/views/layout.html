@@ -25,27 +25,21 @@
     <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap3.css')}}"/>
     <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
-
     <!-- OWL CAROUSEL STYLESHEETS -->
     <link rel="stylesheet" href="{{=URL('static','css/owl.carousel.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/owl.theme.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/style.css')}}"/>
-
-    <!-- OWL CAROUSEL JAVASCRIPTS -->
-    <script src="{{=URL('static','js/jquery-1.9.1.min.js')}}"></script>
-    <script src="{{=URL('static','js/owl.carousel.js')}}"></script>
-    <script src="{{=URL('static','js/carousel.js')}}"></script>
 
     <!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
     <!--[if lt IE 9]>
         <script src="{{=URL('static','js/respond-1.4.2.min.js')}}"></script>
-        <![endif]-->
+    <![endif]-->
     <!-- Favicons -->
     {{include 'web2py_ajax.html'}} <!-- this includes jquery.js, calendar.js/.css and web2py.js -->
     {{block head}}{{end}}
-    {{
+    {{'''
     # using sidebars need to know what sidebar you want to use
     mc0 = 'col-md-12'
     mc1 = 'col-md-9'
@@ -54,6 +48,7 @@
     right_sidebar_enabled = globals().get('right_sidebar_enabled', False)
     middle_column = {0: mc0, 1: mc1, 2: mc2}[
     (left_sidebar_enabled and 1 or 0)+(right_sidebar_enabled and 1 or 0)]
+    '''
     }}
   </head>
   <body>
@@ -86,6 +81,7 @@
     {{end}}
     <!-- Main ========================================= -->
     <!-- Begin page content -->
+
     <div class="container-fluid main-container">
       {{if left_sidebar_enabled:}}
         <div class="col-md-3 left-sidebar">
@@ -95,12 +91,6 @@
             {{end}}
         </div>
       {{pass}}
-
-      <div class="{{=middle_column}}">
-        {{block center}}
-        {{include}}
-        {{end}}
-      </div>
 
       {{if right_sidebar_enabled:}}
         <div class="col-md-3">
@@ -114,21 +104,23 @@
     </div>
 
     {{block footer}} <!-- this is default footer -->      
-    <footer class="footer">
-      <div class="container-fluid">
-        <div class="copyright pull-left">{{=T('Copyright')}} &#169; {{=request.now.year}}</div>
-          <div id="poweredBy" class="pull-right">
-            {{=T('Powered by')}}
-            <a href="http://www.web2py.com/">web2py</a>
+        <footer class="footer">
+          <div class="container-fluid">
+            <div class="copyright pull-left">{{=T('Copyright')}} &#169; {{=request.now.year}}</div>
+              <div id="poweredBy" class="pull-right">
+                {{=T('Powered by')}}
+                <a href="http://www.web2py.com/">web2py</a>
+              </div>
           </div>
-      </div>
-    </footer>
+        </footer>
     {{end}}
+
     <!-- The javascript =============================== -->
     <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
     <script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
     {{block page_js}}{{end page_js}}
     {{if response.google_analytics_id:}}
+
     <!-- Analytics ==================================== -->
     <script src="{{=URL('static','js/analytics.min.js')}}"></script>
     <script type="text/javascript">
@@ -137,7 +129,7 @@
       });
     </script>
     {{pass}}
-    <!-- Share ============================y============ -->
+    <!-- Share ======================================== -->
     <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
   </body>
 </html>
