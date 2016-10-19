@@ -5,21 +5,58 @@
     <!-- OWL CAROUSEL JAVASCRIPTS -->
     <script src="{{=URL('static','js/jquery-1.9.1.min.js')}}"></script>
     <script src="{{=URL('static','js/owl.carousel.js')}}"></script>
+    <script src="{{=URL('static','js/owl.carousel.feature.js')}}"></script>
     <script src="{{=URL('static','js/carousel.js')}}"></script>
 {{end}}
 
-{{block header}}
-    <div class="owl-carousel" id="product-carousel" >
-        <div class="item"><img src="{{=URL('static', 'images/owl1.jpg')}}" alt="Owl Image"></div>
-        <div class="item"><img src="{{=URL('static', 'images/owl2.jpg')}}" alt="Owl Image"></div>
-        <div class="item"><img src="{{=URL('static', 'images/owl3.jpg')}}" alt="Owl Image"></div>
-        <div class="item"><img src="{{=URL('static', 'images/owl4.jpg')}}" alt="Owl Image"></div>
-        <div class="item"><img src="{{=URL('static', 'images/owl5.jpg')}}" alt="Owl Image"></div>
-        <div class="item"><img src="{{=URL('static', 'images/owl6.jpg')}}" alt="Owl Image"></div>
-        <div class="item"><img src="{{=URL('static', 'images/owl7.jpg')}}" alt="Owl Image"></div>
-        <div class="item"><img src="{{=URL('static', 'images/owl8.jpg')}}" alt="Owl Image"></div>
+{{block body}}
+
+        <div class="owl-carousel" id="feature-slider" >
+            <div class="item"><img src="{{=URL('static', 'images/fullimage1.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/fullimage2.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/fullimage3.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/fullimage4.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/fullimage5.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/fullimage6.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/fullimage7.jpg')}}" alt="Owl Image"></div>
+        </div>
+
+    <div class="smaller-wrapper">
+        <div class="owl-carousel" id="product-carousel" >
+            <div class="item"><img src="{{=URL('static', 'images/owl1.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl2.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl3.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl4.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl5.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl6.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl7.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl8.jpg')}}" alt="Owl Image"></div>
+        </div>
+
+        <div class="owl-carousel" id="product-carousel2" >
+            <div class="item"><img src="{{=URL('static', 'images/owl1.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl2.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl3.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl4.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl5.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl6.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl7.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl8.jpg')}}" alt="Owl Image"></div>
+        </div>
+
+        <div class="owl-carousel" id="product-carousel3" >
+            <div class="item"><img src="{{=URL('static', 'images/owl1.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl2.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl3.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl4.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl5.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl6.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl7.jpg')}}" alt="Owl Image"></div>
+            <div class="item"><img src="{{=URL('static', 'images/owl8.jpg')}}" alt="Owl Image"></div>
+        </div>
     </div>
 {{end}}
+
 
 {{if 'message' in globals():}}
     <h2>{{=message}}</h2>

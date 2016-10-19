@@ -76,34 +76,17 @@
         </div>
       </div>
     </nav>
-    <!-- Masthead ===================================== -->    
+    <!-- Masthead ===================================== -->
     {{block header}}
+        Nav Bar
     {{end}}
     <!-- Main ========================================= -->
-    <!-- Begin page content -->
 
-    <div class="container-fluid main-container">
-      {{if left_sidebar_enabled:}}
-        <div class="col-md-3 left-sidebar">
-            {{block left_sidebar}}
-            <h3>Left Sidebar</h3>
-            <p></p>
-            {{end}}
-        </div>
-      {{pass}}
+    {{block body}}
 
-      {{if right_sidebar_enabled:}}
-        <div class="col-md-3">
-            {{block right_sidebar}}
-            <h3>Right Sidebar</h3>
-            <p></p>
-            {{end}}
-        </div>
-      {{pass}}
+    {{end}}
 
-    </div>
-
-    {{block footer}} <!-- this is default footer -->      
+    {{block footer}} <!-- this is default footer -->
         <footer class="footer">
           <div class="container-fluid">
             <div class="copyright pull-left">{{=T('Copyright')}} &#169; {{=request.now.year}}</div>

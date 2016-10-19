@@ -1,6 +1,16 @@
 @charset "UTF-8";
 /* CSS Document */
 
+#feature-slider .item{
+    margin: 3px;
+}
+
+#feature-slider .item img{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
 #product-carousel .item{
     margin: 3px;
 }
@@ -9,4 +19,38 @@
 	display: block;
 	width: 100%;
 	height: auto;
+}
+
+#product-carousel2 .item{
+    margin: 3px;
+}
+
+#product-carousel2 .item img{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+#product-carousel3 .item{
+    margin: 3px;
+}
+
+#product-carousel3 .item img{
+	display: block;
+	width: 100%;
+	height: auto;
+}
+
+.smaller-wrapper {
+	width: 90%;
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+
+}
+
+.owl-carousel {
+	position: relative;
+	margin-left: auto;
+	margin-right: auto;
 }
