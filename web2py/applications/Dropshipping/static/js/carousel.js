@@ -12,22 +12,19 @@
         navigation: true,
         items : 5,
         itemsDesktop : [1199,3],
-        itemsDesktopSmall : [979,3],
-        pagination: false
+        itemsDesktopSmall : [979,3]
     });
 
      $("#product-carousel2").owlCarousel({
         navigation: true,
         items : 5,
         itemsDesktop : [1199,3],
-        itemsDesktopSmall : [979,3],
-
+        itemsDesktopSmall : [979,3]
     });
 
      $("#product-carousel3").owlCarousel({
          navigation: true,
          items : 5,
          itemsDesktop : [1199,3],
-         itemsDesktopSmall : [979,3],
-         slideBy: 2
+         itemsDesktopSmall : [979,3]
     });
