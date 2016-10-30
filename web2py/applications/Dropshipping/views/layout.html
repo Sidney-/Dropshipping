@@ -103,14 +103,22 @@
 
     </div>
 
+    {{block categories}}
+    {{end}}
+
+    {{block newsletter}} <!-- Join our Mailing list section -->
+        <div class="newsletter-container">
+            <div class="newsletter-title"><h4 style="margin: 0;">Love our products? Join our newsletter for special offers!</h4></div>
+            <div class="newsletter-form"><input class="newsletter-input" type="text" value="email"><button class="newsletter-button" type="button">Submit</button></div>
+        </div>
+    {{end}}
 
     {{block footer}} <!-- this is default footer -->
         <footer class="footer">
           <div class="container-fluid">
             <div class="copyright pull-left">{{=T('Copyright')}} &#169; {{=request.now.year}}</div>
               <div id="poweredBy" class="pull-right">
-                {{=T('Powered by')}}
-                <a href="http://www.web2py.com/">web2py</a>
+                Terms of Service | About | Contact
               </div>
           </div>
         </footer>
