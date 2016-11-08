@@ -7,19 +7,20 @@
     <script src="{{=URL('static','js/owl.carousel.js')}}"></script>
     <script src="{{=URL('static','js/owl.carousel.feature.js')}}"></script>
     <script src="{{=URL('static','js/carousel.js')}}"></script>
+    <script src="{{=URL('static','js/nav.js')}}"></script>
 {{end}}
 
 {{block feature}}
     <div class="owl-carousel" id="feature-slider" >
-        <div class="item"><img src="{{=URL('static', 'images/fullimage1.jpg')}}" alt="Owl Image"></div>
-        <div class="item"><img src="{{=URL('static', 'images/fullimage2.jpg')}}" alt="Owl Image"></div>
-        <div class="item"><img src="{{=URL('static', 'images/fullimage2.jpg')}}" alt="Owl Image"></div>
-        <div class="item"><img src="{{=URL('static', 'images/fullimage2.jpg')}}" alt="Owl Image"></div>
+        <div class="feature-item"><img src="{{=URL('static', 'images/product_sample.jpg')}}" alt="Owl Image"></div>
+        <div class="feature-item"><img src="{{=URL('static', 'images/product_sample.jpg')}}" alt="Owl Image"></div>
+        <div class="feature-item"><img src="{{=URL('static', 'images/product_sample.jpg')}}" alt="Owl Image"></div>
+        <div class="feature-item"><img src="{{=URL('static', 'images/product_sample.jpg')}}" alt="Owl Image"></div>
+        <div class="feature-item"><img src="{{=URL('static', 'images/product_sample.jpg')}}" alt="Owl Image"></div>
     </div>
 {{end}}
 
 {{block body}}
-
     <div class="smaller-wrapper">
         <div class="category-title"><h3>4K Ultra HD TVs</h3></div>
         <div class="owl-carousel" id="product-carousel">
@@ -401,21 +402,9 @@
 {{end}}
 
 {{block right_sidebar}}
-<div class="panel panel-info">
-  <div class="panel-heading"><h3 class="panel-title"><a class="btn-block"
-      href="{{=URL('admin','default','index')}}">
-      <i class="glyphicon glyphicon-cog"></i>
-      {{=T("admin")}}
-    </a></h3></div>
-  <div class="panel-body">
-    {{=T("Don't know what to do?")}}
-  </div>
-  <ul class="list-group">
-    <li class="list-group-item">{{=A(T("Online examples"), _href=URL('examples','default','index'))}}</li>
-    <li class="list-group-item"><a href="http://web2py.com">web2py.com</a></li>
-    <li class="list-group-item"><a href="http://web2py.com/book">{{=T('Documentation')}}</a></li>
-  </ul>
-</div>
+
+<div class="side-image" style="width: 100%; display: flex; align-items: center; justify-content: center;"><img src="http://s3-us-west-1.amazonaws.com/dcn-wp/wp-content/uploads/2015/12/04092824/Visit-DKN.jpg" alt="DC Comics News"></div>
+
 {{end}}
 
 {{block categories}}

@@ -1,14 +1,19 @@
 @charset "UTF-8";
 /* CSS Document */
 
-#feature-slider .item{
-    margin: 3px;
+#feature-item {
+	max-height: 200px;
+	z-index: 1;
 }
 
-#feature-slider .item img{
-	display: block;
+.feature-item img{
 	width: 100%;
-	height: auto;
+	max-height: 300px;
+}
+
+.owl-wrapper-outer {
+	max-height: 300px;
+	z-index: 1;
 }
 
 #product-carousel .item{
@@ -19,6 +24,7 @@
 	display: block;
 	width: 100%;
 	height: auto;
+	padding: 10px;
 }
 
 #product-carousel2 .item{
@@ -29,6 +35,7 @@
 	display: block;
 	width: 100%;
 	height: auto;
+	padding: 10px;
 }
 
 #product-carousel3 .item{
@@ -39,6 +46,7 @@
 	display: block;
 	width: 100%;
 	height: auto;
+	padding: 10px;
 }
 
 .smaller-wrapper {
@@ -70,11 +78,6 @@
 .item-price {
 	color: #00c4ff;
 }
-
-.item img {
-	padding: 10px;
-}
-
 .item-text h5 {
 	margin: 0;
 }
