@@ -83,6 +83,11 @@
     </nav>
     <!-- Masthead ===================================== -->
     {{block header}}
+            <!-- fixed add to cart alert -->
+            <div id="cart_alert">
+                <div onclick='close_add_cart()' id="close_cart_alert">X</div>
+            </div>
+
             <div class="header-area" style="width: 100%; height: 125px; background: #ffffff;">logo and search bar area</div>
 			<div class="xs-menu-cont">
 			<a id="menutoggle"><i class="fa fa-align-justify">Toggle</i> </a>
@@ -216,8 +221,6 @@
     {{block categories}}
     {{end}}
 
-
-
     {{block newsletter}} <!-- Join our Mailing list section -->
         <div class="newsletter-container">
             <div class="newsletter-title"><h4 style="margin: 0;">Love our products? Join our newsletter for special offers!</h4></div>
@@ -239,6 +242,7 @@
     <!-- The javascript =============================== -->
     <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
     <script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
+    <script src="{{=URL('static','js/cartfuncjs.js')}}"></script>
     {{block page_js}}{{end page_js}}
     {{if response.google_analytics_id:}}
 

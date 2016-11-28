@@ -251,3 +251,23 @@
 	margin: 5px 0px;
 	color: #ff5a5f;
 }
+
+/*cart css*/
+#cart_alert{
+	left:0;
+	right:0;
+	margin-right: auto;
+	margin-left: auto;
+	width:90%;
+	top:80px;
+	width:100px;
+	height:100px;
+	background:red;
+	position:fixed;
+	z-index:3;
+}
+
+#close_cart_alert{
+	left:2px;
+	cursor:pointer;
+}
