@@ -29,3 +29,10 @@
          itemsDesktop : [1199,3],
          itemsDesktopSmall : [979,3]
     });
+
+    $("#product-carousel4").owlCarousel({
+         navigation: true,
+         items : 4,
+         itemsDesktop : [1199,3],
+         itemsDesktopSmall : [979,3]
+    });

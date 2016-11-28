@@ -54,7 +54,6 @@
 	display: flex;
 	justify-content: center;
 	flex-flow: column;
-
 }
 
 .owl-carousel {
@@ -252,6 +251,7 @@
 	color: #ff5a5f;
 }
 
+<<<<<<< Updated upstream
 /*cart css*/
 #cart_alert{
 	left:0;
@@ -270,4 +270,32 @@
 #close_cart_alert{
 	left:2px;
 	cursor:pointer;
+=======
+
+#product-carousel4 .item{
+    margin: 3px;
+}
+
+#product-carousel4 .item img{
+	display: block;
+	width: 100%;
+	height: auto;
+	padding: 10px;
+}
+
+.smaller-may-like-wrapper {
+	width: 100%;
+	max-width: 1000px;
+	display: flex;
+	justify-content: center;
+	flex-flow: column;
+	align-items: center;
+}
+
+#product-image-you-like {
+	height: auto;
+	display: flex;
+	align-items: flex-end;
+	justify-content: flex-end;
+>>>>>>> Stashed changes
 }
