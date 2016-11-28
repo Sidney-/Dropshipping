@@ -228,3 +228,23 @@ margin-left: 5px;
   -webkit-animation-name: fadeIn;
   animation-name: fadeIn;
 }
+
+#cart_icon{
+    background: url(./../images/icon/cart-icon-16.png);
+    background-repeat: no-repeat;
+    size: 50px;
+    height: 45px;
+    display: inline-block;
+    width: 100px;
+    background-position: 15px 10px;
+    cursor: pointer;
+}
+
+
+#cart_icon:hover{
+    background-color: #00a8c6;
+}
+
+#cart_number{
+    padding-left: 60px;
+}
