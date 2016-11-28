@@ -40,6 +40,9 @@ def user():
     """
     return dict(form=auth())
 
+def checkout():
+    return dict()
+
 def product():
     return dict()
 

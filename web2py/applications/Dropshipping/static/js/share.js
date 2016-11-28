@@ -44,13 +44,23 @@ jQuery(function(){
     });
 
 
+$('document').ready(function () {
+	load_cart_number();
+})
+
 $('.add-to-cart').on('click',function (e) {
 	var product_id = e.target.id;
 	/*
 	send the data to python
 	 */
-
 	var current_num = parseInt( $('#cart_number').html() );
-		
 	$('#cart_number').html(current_num+1);
 })
+
+$('#cart_icon').on('click',function () {
+	window.location.href = './checkout'
+})
+
+function load_cart_number() {
+	console.log('load the cart number later');
+}

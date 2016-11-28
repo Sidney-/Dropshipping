@@ -30,7 +30,7 @@
     <link rel="stylesheet" href="{{=URL('static','css/owl.theme.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/style.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/nav.css')}}"/>
-      <link rel="stylesheet" href="{{=URL('static','css/normal.css')}}"/>
+    <link rel="stylesheet" href="{{=URL('static','css/normal.css')}}"/>
 
     <!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
@@ -55,40 +55,17 @@
     (left_sidebar_enabled and 1 or 0)+(right_sidebar_enabled and 1 or 0)]
     }}
   </head>
-  </head>
   <body>
     <!--[if lt IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
     <div class="w2p_flash alert alert-dismissable">{{=response.flash or ''}}</div>
-    <!-- Navbar ======================================= -->
-    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          {{=response.logo or ''}}
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-          <ul class="nav navbar-nav navbar-right">
-            {{='auth' in globals() and auth.navbar('Welcome',mode='dropdown') or ''}}
-          </ul>
-          {{if response.menu:}}
-          {{=MENU(response.menu, _class='nav navbar-nav',li_class='dropdown',ul_class='dropdown-menu')}}
-          {{pass}}
-        </div>
-      </div>
-    </nav>
     <!-- Masthead ===================================== -->
     {{block header}}
             <!-- fixed add to cart alert -->
             <div id="cart_alert">
                 <div onclick='close_add_cart()' id="close_cart_alert">X</div>
             </div>
-
             <div class="header-area" style="width: 100%; height: 125px; background: #ffffff;">logo and search bar area</div>
+            <div class="header-area" style="width: 100%;display: none ;height: 125px; background: #ffffff;">logo and search bar area</div>
 			<div class="xs-menu-cont">
 			<a id="menutoggle"><i class="fa fa-align-justify">Toggle</i> </a>
 				<nav class="xs-menu displaynone">
@@ -118,11 +95,6 @@
 					</ul>
 				</nav>
 			</div>
-
-            <!--------------------------------------- TEMP NAV ---------------------------------------->
-            <a href="{{=URL('default','index')}}">Home Page</a>
-            <a href="{{=URL('default','product')}}">Product Page</a>
-            <!--------------------------------------- TEMP NAV ---------------------------------------->
 
 			<nav class="menu">
 				<ul>
