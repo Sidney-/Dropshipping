@@ -45,5 +45,12 @@ jQuery(function(){
 
 
 $('.add-to-cart').on('click',function (e) {
-	console.log(e.target.id)
+	var product_id = e.target.id;
+	/*
+	send the data to python
+	 */
+
+	var current_num = parseInt( $('#cart_number').html() );
+		
+	$('#cart_number').html(current_num+1);
 })
