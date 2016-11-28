@@ -89,13 +89,13 @@
 				<nav class="xs-menu displaynone">
 					<ul>
 						<li class="active">
-							<a href="#">Home</a>
+							<a href="{{=URL('default','index')}}">Home</a>
 						</li>
 						<li>
-							<a href="#">About</a>
+							<a href="{{=URL('views','default/product.html')}}">Product Page</a>
 						</li>
 						<li>
-							<a href="#">Services</a>
+							<a href="{{=URL('views','default/product.html')}}">Services</a>
 						</li>
 						<li>
 							<a href="#">Team</a>
@@ -113,13 +113,20 @@
 					</ul>
 				</nav>
 			</div>
+
+            <!--------------------------------------- TEMP NAV ---------------------------------------->
+            <a href="{{=URL('default','index')}}">Home Page</a>
+            <a href="{{=URL('default','product')}}">Product Page</a>
+            <!--------------------------------------- TEMP NAV ---------------------------------------->
+
+
 			<nav class="menu">
 				<ul>
 					<li class="active">
-						<a href="#">Home</a>
+						<a href="{{=URL('default','index.html')}}">Home</a>
 					</li>
 					<li class="drop-down">
-						<a href="#">Products</a>
+						<a href="{{=URL('views','default/product')}}">Products</a>
 
 						<div class="mega-menu fadeIn animated">
 							<div class="mm-6column">
@@ -176,17 +183,7 @@
 
 					</li>
 					<li>
-						<a href="#">Services</a>
-					</li>
-					<li>
-						<a href="#">Team</a>
-					</li>
-					<li>
-						<a href="#">Portfolio</a>
-					</li>
-					<li>
-						<a href="#">Blog</a>
-
+						<a href="{{=URL('default','product')}}">Product Page</a>
 					</li>
 					<li>
 						<a target="_blank" href="http://www.mywebtricks.com/">Contact</a>
