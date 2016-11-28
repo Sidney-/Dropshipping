@@ -192,7 +192,7 @@
 
 .product-container {
 	width: 100%;
-	max-width: 1000px;
+	max-width: 900px;
 	display: flex;
 	align-items: center;
 	justify-content: center;
@@ -200,13 +200,13 @@
 }
 
 .product-image-carousel {
-	width: 45%;
+	width: 65%;
 	height: 300px;
 }
 
 
 .product-item-description-container {
-	width: 55%;
+	width: 35%;
 	height: 300px;
 	padding: 20px;
 }
@@ -296,5 +296,4 @@
 	display: flex;
 	align-items: flex-end;
 	justify-content: flex-end;
->>>>>>> Stashed changes
 }
