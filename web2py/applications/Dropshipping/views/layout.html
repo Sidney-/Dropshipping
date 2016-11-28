@@ -119,21 +119,18 @@
             <a href="{{=URL('default','product')}}">Product Page</a>
             <!--------------------------------------- TEMP NAV ---------------------------------------->
 
-
 			<nav class="menu">
 				<ul>
-					<li class="active">
-						<a href="{{=URL('default','index.html')}}">Home</a>
-					</li>
+					<li class="active"><a onclick="location.href='index'" href="{{=URL('default','index.html')}}">Home</a></li>
 					<li class="drop-down">
-						<a href="{{=URL('views','default/product')}}">Products</a>
+						<a onclick="location.href='product'" href="{{=URL('views','default/product')}}">Products</a>
 
 						<div class="mega-menu fadeIn animated">
 							<div class="mm-6column">
 								<span class="left-images">
 								<img  src="http://4.bp.blogspot.com/-faF-AemPFUM/U4ryP7pQRsI/AAAAAAAAEvA/fZ-hskCSln4/s1600/Magento%2Bthemes.jpg">
 								<p>Most Popular Styles </p>
-				</span>
+				                </span>
 								<span class="categories-list">
 							<ul>
 							<span>Computer</span>
@@ -182,18 +179,13 @@
 					</div>
 
 					</li>
-					<li>
-						<a href="{{=URL('default','product')}}">Product Page</a>
-					</li>
-					<li>
-						<a target="_blank" href="http://www.mywebtricks.com/">Contact</a>
-					</li>
-         <li style="float:right;">
-           <div id="cart_icon">
-               <span id="cart_number">0</span>
-           </div>
-          </li>
-
+					<li><a onclick="location.href='product'" href="{{=URL('default','product')}}">Product Page</a></li>
+					<li><a onclick="location.href='contact'" target="_blank" href="http://www.mywebtricks.com/">Contact</a></li>
+                    <li style="float:right;">
+                        <div id="cart_icon">
+                            <span id="cart_number">0</span>
+                        </div>
+                    </li>
 				</ul>
 			</nav>
 		</div>

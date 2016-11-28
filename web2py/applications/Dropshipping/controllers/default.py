@@ -43,6 +43,9 @@ def user():
 def product():
     return dict()
 
+def contact():
+    return dict()
+
 @cache.action()
 def download():
     """
