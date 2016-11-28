@@ -30,6 +30,7 @@
     <link rel="stylesheet" href="{{=URL('static','css/owl.theme.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/style.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/nav.css')}}"/>
+      <link rel="stylesheet" href="{{=URL('static','css/normal.css')}}"/>
 
     <!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
@@ -37,6 +38,8 @@
     <!--[if lt IE 9]>
         <script src="{{=URL('static','js/respond-1.4.2.min.js')}}"></script>
         <script src="{{=URL('static','js/nav.js')}}"></script>
+        <script src="{{=URL('static','js/main.js')}}"></script>
+        <script src="{{=URL('static','js/general.js')}}"></script>
     <![endif]-->
     <!-- Favicons -->
     {{include 'web2py_ajax.html'}} <!-- this includes jquery.js, calendar.js/.css and web2py.js -->
@@ -189,7 +192,9 @@
 						<a target="_blank" href="http://www.mywebtricks.com/">Contact</a>
 					</li>
          <li style="float:right;">
-           <a href="http://www.mywebtricks.com/">Go my Blog</a>
+           <div id="cart_icon">
+               <span id="cart_number">0</span>
+           </div>
           </li>
 
 				</ul>
@@ -221,6 +226,8 @@
 
     {{block categories}}
     {{end}}
+
+
 
     {{block newsletter}} <!-- Join our Mailing list section -->
         <div class="newsletter-container">
