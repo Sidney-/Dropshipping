@@ -251,7 +251,6 @@
 	color: #ff5a5f;
 }
 
-<<<<<<< Updated upstream
 /*cart css*/
 #cart_alert{
 	left:0;
@@ -267,10 +266,10 @@
 	z-index:3;
 }
 
-#close_cart_alert{
-	left:2px;
-	cursor:pointer;
-=======
+#close_cart_alert {
+	left: 2px;
+	cursor: pointer;
+}
 
 #product-carousel4 .item{
     margin: 3px;
