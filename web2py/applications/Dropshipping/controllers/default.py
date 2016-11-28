@@ -40,6 +40,8 @@ def user():
     """
     return dict(form=auth())
 
+def product():
+    return dict()
 
 @cache.action()
 def download():
