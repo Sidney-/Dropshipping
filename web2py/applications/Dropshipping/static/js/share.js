@@ -64,3 +64,167 @@ $('#cart_icon').on('click',function () {
 function load_cart_number() {
 	console.log('load the cart number later');
 }
+
+$('#check_product_payment input.required_card_num').on('keyup',function (e) {
+		if(e.which == 37 || e.which == 39) return
+		var raw_card_num = $('#'+e.target.id).val();
+		var valid = raw_card_num.replace(/\s+/g, '').replace(/[^0-9]/gi, '');
+		if(valid.length >= 2 ) {
+			var first_two = valid.match(/(^[0-9]{2})/)
+			if(first_two[0] == '34' || first_two[0] == '37'){
+				valid = valid.slice(0,15);
+				if(valid.length > 4 && valid.length < 11){
+					var number = valid.slice(0,4) + ' - ' + valid.slice(4,valid.length)
+				}
+				if(valid.length >= 11){
+					var number = valid.slice(0,4) + ' - ' + valid.slice(4,10) + ' - ' + valid.slice(10,valid.length)
+				}
+				if(valid.length == 15){
+					$('#cc_number').removeClass('invalid');
+					$('#cc_number').addClass('valid');
+					$('#err_cc_number').html('');
+				}else{
+					$('#cc_number').removeClass('valid');
+				}
+			}else{
+				valid = valid.slice(0,16);
+				if(valid.length >= 4 && valid.length < 8){
+					var number = valid.slice(0,4) + ' - ' + valid.slice(4,valid.length)
+				}
+				if(valid.length >= 8 && valid.length <= 12){
+					var number = valid.slice(0,4) + ' - ' + valid.slice(4,8) + ' - ' + valid.slice(8,12)
+				}
+				if(valid.length > 12){
+					var number = valid.slice(0,4) + ' - ' + valid.slice(4,8) + ' - ' + valid.slice(8,12) + ' - ' +valid.slice(12,16)
+				}
+				if(valid.length == 16){
+					$('#cc_number').removeClass('invalid');
+					$('#cc_number').addClass('valid');
+					$('#err_cc_number').html('');
+				}else{
+					$('#cc_number').removeClass('valid');
+				}
+			}
+		}
+		if(typeof number != 'undefined'){
+			$('#'+e.target.id).val( number );
+		}else{
+			$('#'+e.target.id).val( valid );
+		}
+	})
+
+
+
+	$('#check_product_payment input.required').focusout(function (e) {
+		$id = e.target.id;
+		// console.log($id)
+		switch ($id){
+			case 'zip':
+				$zip = $('#'+$id).val();
+				var $zip_validation = /(^\d{5}$)|(^\d{5}-\d{4}$)/.test($zip);
+				if($zip_validation){
+					$('#'+$id).removeClass('invalid');
+					$('#'+$id).addClass('valid');
+					$('#err_zip').html('');
+				}else{
+					$('#err_zip').html('Not a valid ZIP code')
+					$('#'+$id).removeClass('valid');
+					$('#'+$id).addClass('invalid');
+				}
+				break;
+			case 'email':
+				$email = $('#'+$id).val();
+				var $email_validation = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test($email);
+				if($email_validation){
+					$('#'+$id).removeClass('invalid');
+					$('#'+$id).addClass('valid');
+					$('#err_'+$id).html('');
+				}else{
+					$('#err_'+$id).html('Not a valid Email address');
+					$('#'+$id).removeClass('valid');
+					$('#'+$id).addClass('invalid');
+				}
+				break;
+			case 'cvv':
+				$cvv = $('#'+$id).val();
+				var $validation = /^[0-9]{3,4}$/.test($cvv);
+				if($validation){
+					$('#err_'+$id).html('');
+					$('#'+$id).removeClass('invalid');
+					$('#'+$id).addClass('valid');
+				}else{
+					$('#err_'+$id).html('Not a valid CVV code')
+					$('#'+$id).removeClass('valid');
+					$('#'+$id).addClass('invalid');
+				}
+				break;
+			default:
+				$value = $('#'+$id).val();
+				var $validation = /[a-zA-Z0-9]+/.test($value);
+				if($validation){
+					$('#'+$id).removeClass('invalid');
+					$('#'+$id).addClass('valid');
+					$('#err_'+$id).html('')
+				}else{
+					$('#err_'+$id).html('Required field')
+					$('#'+$id).removeClass('valid');
+					$('#'+$id).addClass('invalid');
+				}
+				break;
+		}
+	})
+
+	$('input#checkout_btn').on('click',function (e) {
+		var count = $('#check_product_payment').find('.valid').length ;
+		var cart_id = $('#cart_id').val();
+		if(parseInt( $('#cart_number').html() ) == 0){
+			$('#err_email').html('Your shopping cart is empty');
+			return false;
+		}
+		if(count == 8){
+			var $customer_info = {
+				'full_name': $('#full_name').val(),
+				'address1': $('#address1').val(),
+				'address2' : $('#address2').val(),
+				'city': $('#city').val(),
+				'zip': $('#zip').val(),
+				'card_number': $('#cc_number').val(),
+				'month' : $('#cc_exp_month').has(':selected').val(),
+				'year' : $('#cc_exp_year').has(':selected').val(),
+				'name_on_card' : $('#cc_name').val(),
+				'cvv' : $('#cvv').val(),
+				'email' : $('#email').val(),
+				'cart_id' : cart_id
+
+			};
+			var jsonString = JSON.stringify($customer_info);
+			$.ajax({
+				method: 'POST',
+				url: '/purchasing/submit_order',
+				async: true,
+				data: {
+					data : jsonString
+				}
+			})
+				.done(function (respond) {
+					respond = jQuery.parseJSON(respond);
+					if(respond['stock_check'] == 'oos'){
+						out_of_stock_error(respond['oos_items']);
+					}
+				});
+
+		}else{
+			show_validation()
+		}
+	})
+
+
+function show_validation() {
+		var fields = ['full_name','address1','city','zip','cc_name','cc_number','cvv','email'];
+		for(i=0;i<fields.length;i++){
+			if(!$('#'+fields[i]).hasClass('valid')){
+				$('#err_'+fields[i]).html('Required field')
+				$('#'+fields[i]).addClass('invalid');
+			}
+		}
+	}

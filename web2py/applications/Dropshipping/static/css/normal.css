@@ -2074,7 +2074,8 @@ xpopup
 }
 
 .valid{
-    background-image: url(/assets/img/icon/32/valid_icon_32.png);
+
+    background-image: url(./../images/icon/valid_icon_32.png);
     background-repeat: no-repeat;
     background-position-x: 98%;
     background-position-y: 50% ;
@@ -2083,7 +2084,7 @@ xpopup
 }
 
 .invalid{
-    background-image: url(/assets/img/icon/32/invalid_icon_32.png);
+    background-image: url(./../images/icon/invalid_icon_32.png);
     background-repeat: no-repeat;
     background-position-x: 98%;
     background-position-y: 50% ;
