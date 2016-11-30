@@ -50,9 +50,11 @@ $('document').ready(function () {
 
 $('.add-to-cart').on('click',function (e) {
 	var product_id = e.target.id;
-	/*
-	send the data to python
-	 */
+	var qty = 1  // Change it later
+	 $.ajax({
+		 type: "POST",
+		 url: "/Dropshipping/default/add_to_cart?product_id="+product_id+"&qty="+qty,
+	 })
 	var current_num = parseInt( $('#cart_number').html() );
 	$('#cart_number').html(current_num+1);
 })
