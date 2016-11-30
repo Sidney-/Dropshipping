@@ -57,16 +57,27 @@ def contact():
     return dict()
 
 def create_cart():
-    query = "insert into cart (user_id) VALUES (" + str(user_id) + ")"
+    user_id = get_user_id()
+    query = "insert into cart (user_id) VALUES ('" + user_id + "')"
+    print(query)
     db.executesql(query)
     response = 1
 
     return dict(response=response)
 
+def get_user_id():
+    if auth.user_id:
+        user_id = str(auth.user_id)
+    else:
+        user_id = str(response.session_id)
+    return user_id
+
 def get_cart_id():
-    user_id = str(auth.user_id)
-    query = "select cart_id from cart where user_id = " + user_id  + "status = active"
-    result = db.executesql(query)
+    user_id = get_user_id()
+    query = "select cart_id from cart where user_id = '" + user_id + "' and status = 'active'"
+    print(query)
+    result = db.executesql(query,as_dict=True)
+    print(int(result['cart_id']))
     if result:
         return str(result[0])
     else:
@@ -108,7 +119,14 @@ def order_item_exists_in_cart(product_id):
 def remove_from_cart():
     product_id = request.vars.product_id
     cart_id = get_cart_id()
-    
+
+    if order_item_exists_in_cart(product_id):
+        query = "delete from order_item where cart_id = " + cart_id + " and product_id = " + product_id
+        response = 1
+    else:
+        response =0
+    return dict(response)
+
 
 
 
