@@ -180,7 +180,7 @@
 
 					</li>
 					<li><a onclick="location.href='product'" href="{{=URL('default','product')}}">Product Page</a></li>
-					<li><a onclick="location.href='contact'" target="_blank" href="http://www.mywebtricks.com/">Contact</a></li>
+					<li><a onclick="location.href='contact'" href="{{=URL('default','contact')}}">Contact</a></li>
                     <li style="float:right;">
                         <div id="cart_icon">
                             <span id="cart_number">0</span>
@@ -238,6 +238,7 @@
     <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
     <script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
     <script src="{{=URL('static','js/cartfuncjs.js')}}"></script>
+    <script src="{{=URL('static','js/contactjs.js')}}"></script>
     {{block page_js}}{{end page_js}}
     {{if response.google_analytics_id:}}
 

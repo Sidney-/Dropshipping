@@ -1,0 +1,13 @@
+{{left_sidebar_enabled,right_sidebar_enabled=False,('message' in globals())}}
+{{extend 'layout.html'}}
+{{block body}}
+<div id="contact_form_container">
+    <form id="contact_form">
+        <input type="text" name="contact_name" placeholder="Name"/>
+        <input type="text" name="contact_email" placeholder="E-Mail"/>
+        <textarea name="contact_message" cols="47" rows="10"></textarea>
+        <br>
+        <button onclick="send_contact_form()" type="button" value="send">send</button>
+    </form>
+</div>
+{{end}}

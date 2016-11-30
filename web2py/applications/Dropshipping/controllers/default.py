@@ -9,6 +9,9 @@
 # -------------------------------------------------------------------------
 import json
 
+#/////////////////////
+#INDEX PAGE
+#/////////////////////
 def index():
     """
     example action using the internationalization operator T and flash
@@ -21,28 +24,12 @@ def index():
     response.flash = T("Welcome to " + title)
     return dict(message=T("Welcome to web2py!" + title))
 
-
-def user():
-    """
-    exposes:
-    http://..../[app]/default/user/login
-    http://..../[app]/default/user/logout
-    http://..../[app]/default/user/register
-    http://..../[app]/default/user/profile
-    http://..../[app]/default/user/retrieve_password
-    http://..../[app]/default/user/change_password
-    http://..../[app]/default/user/bulk_register
-    use @auth.requires_login()
-        @auth.requires_membership('group name')
-        @auth.requires_permission('read','table name',record_id)
-    to decorate functions that need access control
-    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
-    """
-    return dict(form=auth())
-
 def checkout():
     return dict()
 
+#/////////////////////
+#PRODUCT PAGE
+#/////////////////////
 def product():
     return dict()
 
@@ -52,10 +39,15 @@ def get_products_by_location():
     data = db.executesql(query, as_dict=True)
     return json.dumps(data)
 
-
+#/////////////////////
+#CONTACT PAGE
+#/////////////////////
 def contact():
     return dict()
 
+#/////////////////////
+#CART FUNCTIONS
+#/////////////////////
 def create_cart():
     user_id = get_user_id()
     query = "insert into cart (user_id) VALUES ('" + user_id + "')"
@@ -84,7 +76,6 @@ def get_cart_id():
         create_cart()
         cart_id = get_cart_id()
         return cart_id
-
 
 def add_to_cart():
     product_id = str(request.vars.product_id)
@@ -115,7 +106,6 @@ def order_item_exists_in_cart(product_id):
         response = False
     return response
 
-
 def remove_from_cart():
     product_id = request.vars.product_id
     cart_id = get_cart_id()
@@ -130,7 +120,9 @@ def remove_from_cart():
 
 
 
-
+#/////////////////////
+#DEFAULT PY FUNCTIONS
+#/////////////////////
 @cache.action()
 def download():
     """
@@ -138,7 +130,6 @@ def download():
     http://..../[app]/default/download/[filename]
     """
     return response.download(request, db)
-
 
 def call():
     """
@@ -148,3 +139,21 @@ def call():
     supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
     """
     return service()
+
+def user():
+    """
+    exposes:
+    http://..../[app]/default/user/login
+    http://..../[app]/default/user/logout
+    http://..../[app]/default/user/register
+    http://..../[app]/default/user/profile
+    http://..../[app]/default/user/retrieve_password
+    http://..../[app]/default/user/change_password
+    http://..../[app]/default/user/bulk_register
+    use @auth.requires_login()
+        @auth.requires_membership('group name')
+        @auth.requires_permission('read','table name',record_id)
+    to decorate functions that need access control
+    also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
+    """
+    return dict(form=auth())
