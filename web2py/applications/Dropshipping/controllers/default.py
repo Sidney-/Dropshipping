@@ -8,6 +8,8 @@
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
 import json
+import locale
+locale.setlocale( locale.LC_ALL, '' )
 
 def index():
     """
@@ -44,13 +46,22 @@ def checkout():
     return dict()
 
 def product():
-    return dict()
+    product_id = str(request.vars.product_id)
+    query = "select * from product_view where product_id = " + product_id
+    result = db.executesql(query, as_dict=True)
+    for i in range(len(result)):
+        result[i]['price'] = locale.currency(result[i]['price'], grouping=True)
+    return json.dumps(result)
 
-def get_products_by_location():
-    location = request.vars.location
-    query = "select * from product_location where product_location = " + location
-    data = db.executesql(query, as_dict=True)
-    return json.dumps(data)
+
+def get_products_by_category():
+    # category_name = request.vars.category_name
+    category_name = "Television"
+    query = "select product_id, title, price, image_path from product_tag_association where tag_name = '" + str(category_name) + "'"
+    result = db.executesql(query, as_dict=True)
+    for i in range(len(result)):
+        result[i]['price'] = locale.currency(result[i]['price'], grouping=True)
+    return json.dumps(result)
 
 
 def contact():
@@ -63,23 +74,24 @@ def create_cart():
     db.executesql(query)
     response = 1
 
-    return dict(response=response)
-
 def get_user_id():
+    print (session.id)
     if auth.user_id:
         user_id = str(auth.user_id)
+    elif session.id:
+        user_id = str(session.id)
     else:
-        user_id = str(response.session_id)
+        session.id = response.session_id
+        user_id = str(session.id)
     return user_id
 
 def get_cart_id():
     user_id = get_user_id()
     query = "select cart_id from cart where user_id = '" + user_id + "' and status = 'active'"
-    print(query)
-    result = db.executesql(query,as_dict=True)
-    print(int(result['cart_id']))
+    result = db.executesql(query)
+
     if result:
-        return str(result[0])
+        return str(result[0][0])
     else:
         create_cart()
         cart_id = get_cart_id()
@@ -97,13 +109,15 @@ def add_to_cart():
             query = "insert into order_item (cart_id, product_id, qty) VALUES (" + cart_id + ", " + product_id + ", " + qty + ")"
             db.executesql(query)
             response = 1
-    return dict(response=response)
+    return json.dumps(dict(response=response))
 
 def get_cart_items():
     cart_id = get_cart_id()
-    query = "select * from order_items where cart_id = " + cart_id
-    data = db.executesql(query, as_dict=True)
-    return json.dumps(data)
+    query = "select * from product_order_item where cart_id = " + cart_id
+    result = db.executesql(query, as_dict=True)
+    for i in range(len(result)):
+        result[i]['price'] = locale.currency(result[i]['price'], grouping=True)
+    return json.dumps(result)
 
 def order_item_exists_in_cart(product_id):
     cart_id = get_cart_id()
@@ -122,10 +136,11 @@ def remove_from_cart():
 
     if order_item_exists_in_cart(product_id):
         query = "delete from order_item where cart_id = " + cart_id + " and product_id = " + product_id
+        db.executesql(query)
         response = 1
     else:
-        response =0
-    return dict(response)
+        response = 0
+    return json.dumps(dict(response=response))
 
 
 
