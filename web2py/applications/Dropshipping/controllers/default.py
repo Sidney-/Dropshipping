@@ -10,6 +10,16 @@
 import json
 
 #/////////////////////
+#GENERAL SUBROUTINES
+#/////////////////////
+def get_user_id():
+    if auth.user_id:
+        user_id = str(auth.user_id)
+    else:
+        user_id = str(response.session_id)
+    return user_id
+
+#/////////////////////
 #INDEX PAGE
 #/////////////////////
 def index():
@@ -45,6 +55,12 @@ def get_products_by_location():
 def contact():
     return dict()
 
+def contact_post():
+    return dict()
+
+def contact_get():
+    return dict()
+
 #/////////////////////
 #CART FUNCTIONS
 #/////////////////////
@@ -56,13 +72,6 @@ def create_cart():
     response = 1
 
     return dict(response=response)
-
-def get_user_id():
-    if auth.user_id:
-        user_id = str(auth.user_id)
-    else:
-        user_id = str(response.session_id)
-    return user_id
 
 def get_cart_id():
     user_id = get_user_id()
@@ -116,9 +125,6 @@ def remove_from_cart():
     else:
         response =0
     return dict(response)
-
-
-
 
 #/////////////////////
 #DEFAULT PY FUNCTIONS

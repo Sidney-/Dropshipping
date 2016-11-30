@@ -1,10 +1,6 @@
 /**
- * Created by Giant Key on 11/30/2016.
+ * Created by Victor Shahbazian on 11/30/2016.
  */
-$(document).ready(function(){
-
-});
-
 function send_contact_form(){
     var name_check = false;
     var email_check = false;
