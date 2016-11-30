@@ -57,13 +57,9 @@ def contact():
     return dict()
 
 def create_cart():
-
-    if result:
-        response = 0
-    else:
-        query = "insert into cart (user_id) VALUES (" + str(user_id) + ")"
-        db.executesql(query)
-        response = 1
+    query = "insert into cart (user_id) VALUES (" + str(user_id) + ")"
+    db.executesql(query)
+    response = 1
 
     return dict(response=response)
 
@@ -74,33 +70,46 @@ def get_cart_id():
     if result:
         return str(result[0])
     else:
-        return str(0)
+        create_cart()
+        cart_id = get_cart_id()
+        return cart_id
 
 
 def add_to_cart():
-    product_id = request.vars.product_id
-    qty = request.vars.qty
-    user_id = str(auth.user_id)
-
+    product_id = str(request.vars.product_id)
+    qty = str(request.vars.qty)
     cart_id = get_cart_id()
     if cart_id != 0:
-        query = "select * from order_item where user_id = " + user_id + " and cart_id = " + cart_id
-        result = db.executesql(query)
-        if result:
+        if order_item_exists_in_cart(product_id):
             response = 0
         else:
-            query = "insert into order_item (cart_id, product_id, qty) VALUES (" + str(cart_id) + ", " + str(product_id) + ", "+ str(qty) + ")"
+            query = "insert into order_item (cart_id, product_id, qty) VALUES (" + cart_id + ", " + product_id + ", " + qty + ")"
             db.executesql(query)
             response = 1
     return dict(response=response)
 
-
 def get_cart_items():
+    cart_id = get_cart_id()
+    query = "select * from order_items where cart_id = " + cart_id
+    data = db.executesql(query, as_dict=True)
+    return json.dumps(data)
+
+def order_item_exists_in_cart(product_id):
+    cart_id = get_cart_id()
+    query = "select * from order_item where product_id = " + product_id + " and cart_id = " + cart_id
+    result = db.executesql(query)
+    if result:
+        response = True
+    else:
+        response = False
+    return response
 
 
 def remove_from_cart():
     product_id = request.vars.product_id
-    user_id = str(auth.user_id)
+    cart_id = get_cart_id()
+    
+
 
 
 
