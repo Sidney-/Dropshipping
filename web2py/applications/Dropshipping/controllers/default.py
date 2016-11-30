@@ -112,7 +112,11 @@ def get_cart_items():
     format_price(result)
     return json.dumps(result)
 
-
+#returns main categories
+def get_main_categories():
+    query = "select tag_name, tag_id from tag where main_category = 1"
+    result = db.executesql(query, as_dict=True)
+    return json.dumps(result)
 
 
 def checkout():
