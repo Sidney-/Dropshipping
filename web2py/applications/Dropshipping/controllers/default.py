@@ -9,30 +9,90 @@
 # -------------------------------------------------------------------------
 import json
 
-#/////////////////////
-#GENERAL SUBROUTINES
-#/////////////////////
-def get_user_id():
-    if auth.user_id:
-        user_id = str(auth.user_id)
-    else:
-        user_id = str(response.session_id)
-    return user_id
+
 
 #/////////////////////
 #INDEX PAGE
 #/////////////////////
 def index():
-    """
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
-
-    if you need a simple wiki simply replace the two lines below with:
-    return auth.wiki()
-    """
+    session.custome_session = response.session_id
     title = "Dropshipping"
     response.flash = T("Welcome to " + title)
     return dict(message=T("Welcome to web2py!" + title))
+
+def add_to_cart():
+    product_id = str(request.vars.product_id)
+    qty = str(request.vars.qty)
+    user_id = get_user_id()
+    cart_id = get_cart_id(user_id)
+    # print 'cart_id => '+cart_id
+    query = "insert into order_item (cart_id, product_id, qty) VALUES (" + cart_id + ", " + product_id + ", " + qty + ")"
+    db.executesql(query)
+
+def get_cart_id(user_id):
+    query = "select cart_id from cart where user_id = '" + str(user_id) + "' and status = 'active'"
+    result = db.executesql(query)
+    if not result:
+        cart_id = create_cart(user_id)
+    else:
+        cart_id = str(result[0][0])
+
+    return cart_id
+
+
+def get_number_of_items_in_cart():
+    user_id = get_user_id()
+    cart_id = get_cart_id(user_id)
+    query = "select sum(qty) as total from order_item where cart_id = "+ cart_id
+    result = db.executesql(query)
+    return json.dumps({'total': int(result[0][0])})
+
+
+def create_cart(user_id):
+    query = "insert into cart (user_id) values('" + user_id + "')"
+    db.executesql(query)
+    query = "select cart_id from cart where user_id = '" + user_id + "'"
+    cart_id = db.executesql(query)
+    return str(cart_id[0][0])
+
+
+def get_user_id():
+    if auth.user_id:
+        user_id = str(auth.user_id)
+    else:
+        user_id = session.custome_session
+
+    return user_id
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+"""
+
 
 def checkout():
     return dict()
@@ -66,21 +126,17 @@ def contact_get():
 #/////////////////////
 def create_cart():
     user_id = get_user_id()
-    query = "insert into cart (user_id) VALUES ('" + user_id + "')"
-    print(query)
-    db.executesql(query)
+    query = "insert into cart (user_id) VALUES ('" + str(user_id) + "')"
+    res = db.executesql(query)
     response = 1
-
-    return dict(response=response)
+    return response
 
 def get_cart_id():
     user_id = get_user_id()
-    query = "select cart_id from cart where user_id = '" + user_id + "' and status = 'active'"
-    print(query)
+    query = "select cart_id from cart where user_id = '" + str(user_id) + "' and status = 'active'"
     result = db.executesql(query,as_dict=True)
-    print(int(result['cart_id']))
     if result:
-        return str(result[0])
+        return result[0]['cart_id']
     else:
         create_cart()
         cart_id = get_cart_id()
@@ -90,6 +146,7 @@ def add_to_cart():
     product_id = str(request.vars.product_id)
     qty = str(request.vars.qty)
     cart_id = get_cart_id()
+    print 'add to cart() => cart_id = ' + cart_id
     if cart_id != 0:
         if order_item_exists_in_cart(product_id):
             response = 0
@@ -107,7 +164,7 @@ def get_cart_items():
 
 def order_item_exists_in_cart(product_id):
     cart_id = get_cart_id()
-    query = "select * from order_item where product_id = " + product_id + " and cart_id = " + cart_id
+    query = "select * from order_item where product_id = " + str(product_id) + " and cart_id = " + str(cart_id)
     result = db.executesql(query)
     if result:
         response = True
@@ -118,7 +175,6 @@ def order_item_exists_in_cart(product_id):
 def remove_from_cart():
     product_id = request.vars.product_id
     cart_id = get_cart_id()
-
     if order_item_exists_in_cart(product_id):
         query = "delete from order_item where cart_id = " + cart_id + " and product_id = " + product_id
         response = 1
@@ -126,6 +182,7 @@ def remove_from_cart():
         response =0
     return dict(response)
 
+"""
 #/////////////////////
 #DEFAULT PY FUNCTIONS
 #/////////////////////
