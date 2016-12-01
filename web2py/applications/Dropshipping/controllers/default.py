@@ -64,7 +64,8 @@ def get_user_id():
 
     return user_id
 
-
+def product():
+    return dict()
 
 
 

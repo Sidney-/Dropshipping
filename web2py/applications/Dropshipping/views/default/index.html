@@ -403,37 +403,21 @@
 
 {{block right_sidebar}}
 
-<div class="side-image" style="width: 100%; display: flex; align-items: center; justify-content: center;"><img src="http://s3-us-west-1.amazonaws.com/dcn-wp/wp-content/uploads/2015/12/04092824/Visit-DKN.jpg" alt="DC Comics News"></div>
 
-{{end}}
+<div class="side-categories" style="flex-direction: column;">
+    <div class="category-title"><h2 style="margin: 0; padding: 0px;">Categories</h2></div>
 
-{{block categories}}
-    <div class="product-advertisement">
-            <img src="{{=URL('static','images/CannonAd.jpg')}}"/>
-    </div>
+    <select class="category-drop-down">
+      <option value="select">Select</option>
+      <option value="tv">TVs</option>
+      <option value="computer">Computers</option>
+      <option value="computer">Tablets</option>
+      <option value="gaming">Gaming</option>
+    </select>
+</div>
 
-    <div class="category-container">
-        <div class="category-list-title"><h3>Browse by Category</h3></div>
-
-        <ul class="category-row">
-            <li>Appliances</li>
-            <li>Audio</li>
-            <li>Home Theater</li>
-            <li>Gaming</li>
-            <li>Computers & Tablets</li>
-            <li>Cameras & Camcorders</li>
-            <li>Cellphones</li>
-        </ul>
-
-        <ul class="category-row">
-            <li>Car Electronics</li>
-            <li>Movies & Music</li>
-            <li>Wearables</li>
-            <li>Smart Home</li>
-            <li>Toys</li>
-            <li>Drones</li>
-            <li>VR</li>
-        </ul>
-
-    </div>
+<div class="category-title" style="margin: 10px; padding-top: 20px; border-bottom: 1px solid #d3d3d3;"><h3 style="margin: 0; padding: 0px;">Shop Tvs</h3></div>
+<div class="side-image" style="margin-top: 20px;"><img src="{{=URL('static', 'images/TV.jpg')}}" alt="Owl Image" width="100%"></div>
+<div class="category-title" style="margin: 10px; padding-top: 20px; border-bottom: 1px solid #d3d3d3;"><h3 style="margin: 0; padding: 0px;">Shop Mac</h3></div>
+<div class="side-image" style="margin-top: 20px;"><img src="{{=URL('static', 'images/Explore.jpg')}}" alt="Owl Image" width="100%"></div>
 {{end}}
