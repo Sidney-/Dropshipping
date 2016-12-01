@@ -1,6 +1,6 @@
 @charset "UTF-8";
 /* CSS Document */
-
+body { padding: 0; margin: 0;}
 #feature-item {
 	max-height: 200px;
 	z-index: 1;
@@ -188,6 +188,7 @@
 	align-items: center;
 	justify-content: center;
 	flex-direction: column;
+	margin-top: 40px;
 }
 
 .product-container {
@@ -232,6 +233,7 @@
 
 .product-description {
 	max-width: 900px;
+	margin-top: 40px;
 }
 
 .product-item-description-title h3 {
@@ -298,6 +300,7 @@
 	justify-content: flex-end;
 }
 
+<<<<<<< Updated upstream
 /********************Contact Page************************/
 #contact_form_container{
 	margin:0 auto;
@@ -337,6 +340,15 @@
 	border-radius:5px;
 }
 
+#contact_name_error{
+	display:none;
+}
+#contact_email_error{
+	dispay:none;
+}
+#contact_message_error{
+	display:none;
+}
 #contact_form_container textarea{
 	margin:5px;
 	padding:5px;
@@ -349,4 +361,10 @@
 	border:1px solid red;
 	box-shadow: 0 0 10px;
 	border-radius:5px;
+=======
+.product-image-carousel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+>>>>>>> Stashed changes
 }

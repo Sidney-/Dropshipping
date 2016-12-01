@@ -12,6 +12,8 @@ function send_contact_form(){
 
     if(contact_name.length < 4 || contact_name.length > 16 ){
         //set error message on name
+    }else{
+        name_check = true;
     }
 
     if(contact_email.length < 4 || contact_email.length > 16){
@@ -32,12 +34,15 @@ function send_contact_form(){
                 }
             }
         }
+        if(at_check == true){
+            email_check = true;
+        }
     }
 
     if(contact_message.length <= 0 || contact_message.length > 500){
         //set error message
     }else{
-
+        message_check = true;
     }
 
     if(name_check && email_check && message_check){
