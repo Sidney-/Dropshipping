@@ -24,15 +24,12 @@
     <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap3.css')}}"/>
     <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
-<<<<<<< HEAD
-=======
     <!-- OWL CAROUSEL STYLESHEETS -->
     <link rel="stylesheet" href="{{=URL('static','css/owl.carousel.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/owl.theme.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/style.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/nav.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/normal.css')}}"/>
->>>>>>> master
     <!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
@@ -78,12 +75,8 @@
         </div>
       </div>
     </nav>
-    <!-- Masthead ===================================== -->    
+    <!-- Masthead ===================================== -->
     {{block header}}
-<<<<<<< HEAD
-    {{end}}
-    <!-- Main ========================================= -->
-=======
 		<!-- fixed add to cart alert -->
             <div id="cart_alert">
                 <div onclick='close_add_cart()' id="close_cart_alert">X</div>
@@ -171,7 +164,6 @@
     <!-- Main ========================================= -->
 	{{block feature}}
     {{end}}
->>>>>>> master
     <!-- Begin page content -->
     <div class="container-fluid main-container">
       {{if left_sidebar_enabled:}}
@@ -200,22 +192,6 @@
 
     </div>
 
-<<<<<<< HEAD
-    {{block footer}} <!-- this is default footer -->      
-    <footer class="footer">
-      <div class="container-fluid">
-        <div class="copyright pull-left">{{=T('Copyright')}} &#169; {{=request.now.year}}</div>
-          <div id="poweredBy" class="pull-right">
-            {{=T('Powered by')}}
-            <a href="http://www.web2py.com/">web2py</a>
-          </div>
-      </div>
-    </footer>
-    {{end}}
-    <!-- The javascript =============================== -->
-    <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
-    <script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
-=======
 	{{block newsletter}} <!-- Join our Mailing list section -->
         <div class="newsletter-container">
             <div class="newsletter-title"><h4 style="margin: 0;">Love our products? Join our newsletter for special offers!</h4></div>
@@ -240,7 +216,7 @@
     <script src="{{=URL('static','js/owl.carousel.feature.js')}}"></script>
     <script src="{{=URL('static','js/carousel.js')}}"></script>
 	<script src="{{=URL('static','js/jquery-1.9.1.min.js')}}"></script>
->>>>>>> master
+    <script src="{{=URL('static','js/nav.js')}}"></script>
     {{block page_js}}{{end page_js}}
     {{if response.google_analytics_id:}}
     <!-- Analytics ==================================== -->

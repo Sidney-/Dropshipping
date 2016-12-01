@@ -7,14 +7,14 @@
 # - user is required for authentication and authorization
 # - download is for downloading files uploaded in the db (does streaming)
 # -------------------------------------------------------------------------
+import json
 
 
+
+#/////////////////////
+#INDEX PAGE
+#/////////////////////
 def index():
-<<<<<<< HEAD
-    """
-    example action using the internationalization operator T and flash
-    rendered by views/default/index.html or views/generic.html
-=======
     session.custome_session = response.session_id
     title = "Dropshipping"
     response.flash = T("Welcome to " + title)
@@ -152,14 +152,67 @@ def get_cart_id():
         create_cart()
         cart_id = get_cart_id()
         return cart_id
->>>>>>> master
 
-    if you need a simple wiki simply replace the two lines below with:
-    return auth.wiki()
+def add_to_cart():
+    product_id = str(request.vars.product_id)
+    qty = str(request.vars.qty)
+    cart_id = get_cart_id()
+    print 'add to cart() => cart_id = ' + cart_id
+    if cart_id != 0:
+        if order_item_exists_in_cart(product_id):
+            response = 0
+        else:
+            query = "insert into order_item (cart_id, product_id, qty) VALUES (" + cart_id + ", " + product_id + ", " + qty + ")"
+            db.executesql(query)
+            response = 1
+    return dict(response=response)
+
+def get_cart_items():
+    cart_id = get_cart_id()
+    query = "select * from order_items where cart_id = " + cart_id
+    data = db.executesql(query, as_dict=True)
+    return json.dumps(data)
+
+def order_item_exists_in_cart(product_id):
+    cart_id = get_cart_id()
+    query = "select * from order_item where product_id = " + str(product_id) + " and cart_id = " + str(cart_id)
+    result = db.executesql(query)
+    if result:
+        response = True
+    else:
+        response = False
+    return response
+
+def remove_from_cart():
+    product_id = request.vars.product_id
+    cart_id = get_cart_id()
+    if order_item_exists_in_cart(product_id):
+        query = "delete from order_item where cart_id = " + cart_id + " and product_id = " + product_id
+        response = 1
+    else:
+        response =0
+    return dict(response)
+
+"""
+#/////////////////////
+#DEFAULT PY FUNCTIONS
+#/////////////////////
+@cache.action()
+def download():
     """
-    response.flash = T("Hello World")
-    return dict(message=T('Welcome to web2py!'))
+    allows downloading of uploaded files
+    http://..../[app]/default/download/[filename]
+    """
+    return response.download(request, db)
 
+def call():
+    """
+    exposes services. for example:
+    http://..../[app]/default/call/jsonrpc
+    decorate with @services.jsonrpc the functions to expose
+    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
+    """
+    return service()
 
 def user():
     """
@@ -178,24 +231,3 @@ def user():
     also notice there is http://..../[app]/appadmin/manage/auth to allow administrator to manage users
     """
     return dict(form=auth())
-
-
-@cache.action()
-def download():
-    """
-    allows downloading of uploaded files
-    http://..../[app]/default/download/[filename]
-    """
-    return response.download(request, db)
-
-
-def call():
-    """
-    exposes services. for example:
-    http://..../[app]/default/call/jsonrpc
-    decorate with @services.jsonrpc the functions to expose
-    supports xml, json, xmlrpc, jsonrpc, amfrpc, rss, csv
-    """
-    return service()
-
-

@@ -50,8 +50,8 @@ def _():
     # ------------------------------------------------------------------------------------------------------------------
     response.menu += [
         (T('My Sites'), False, URL('admin', 'default', 'site')),
-        (T('This App'), False, '#', [
-            (T('Design'), False, URL('admin', 'default', 'design/%s' % app)),
+        (T('Categories'), False, '#', [
+            (T('Appliances'), False, URL('admin', 'default', 'design/%s' % app)),
             LI(_class="divider"),
             (T('Controller'), False,
              URL(
