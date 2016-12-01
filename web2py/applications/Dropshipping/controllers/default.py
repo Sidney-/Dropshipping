@@ -67,7 +67,17 @@ def get_user_id():
 def product():
     return dict()
 
+def checkout():
+    user_id = get_user_id()
+    cart_id = get_cart_id(user_id)
+    query = "select * from product_order_item where cart_id = " + cart_id
+    result = db.executesql(query, as_dict=True)
 
+    return dict(location=T('Dropshiping - Checkout'),items=result)
+
+
+def contact():
+    return dict()
 
 
 

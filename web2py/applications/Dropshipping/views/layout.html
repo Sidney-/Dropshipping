@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <!--[if (gt IE 9)|!(IE)]><!--> <html class="no-js" lang="{{=T.accepted_language or 'en'}}"> <!--<![endif]-->
   <head>
-
     <meta charset="utf-8">
     <!-- www.phpied.com/conditional-comments-block-downloads/ -->
     <!-- Always force latest IE rendering engine
@@ -31,16 +30,12 @@
     <link rel="stylesheet" href="{{=URL('static','css/style.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/nav.css')}}"/>
     <link rel="stylesheet" href="{{=URL('static','css/normal.css')}}"/>
-
     <!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
     <!--[if lt IE 9]>
         <script src="{{=URL('static','js/respond-1.4.2.min.js')}}"></script>
-        <script src="{{=URL('static','js/nav.js')}}"></script>
-        <script src="{{=URL('static','js/main.js')}}"></script>
-        <script src="{{=URL('static','js/general.js')}}"></script>
-    <![endif]-->
+        <![endif]-->
     <!-- Favicons -->
     {{include 'web2py_ajax.html'}} <!-- this includes jquery.js, calendar.js/.css and web2py.js -->
     {{block head}}{{end}}
@@ -58,9 +53,8 @@
   <body>
     <!--[if lt IE 8]><p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p><![endif]-->
     <div class="w2p_flash alert alert-dismissable">{{=response.flash or ''}}</div>
-
     <!-- Navbar ======================================= -->
-    <nav style="display: none;" class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
       <div class="container-fluid">
         <div class="navbar-header">
           <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
@@ -83,7 +77,7 @@
     </nav>
     <!-- Masthead ===================================== -->
     {{block header}}
-            <!-- fixed add to cart alert -->
+		<!-- fixed add to cart alert -->
             <div id="cart_alert">
                 <div onclick='close_add_cart()' id="close_cart_alert">X</div>
             </div>
@@ -125,7 +119,7 @@
 				<ul>
 					<li class="active"><a onclick="location.href='index'" href="{{=URL('default','index.html')}}">Home</a></li>
 					<li class="drop-down">
-						<a onclick="location.href='product'" href="{{=URL('views','default/product')}}">Products</a>
+						<div onclick="location.href='product'">Products</div>
 
 						<div class="mega-menu fadeIn animated">
 						<div class="mm-4column" style="border-right: 1px solid #d3d3d3;">
@@ -157,7 +151,7 @@
 					</div>
 
 					</li>
-					<li><a onclick="location.href='contact'" href="{{=URL('default','contact')}}">Contact</a></li>
+					<li><div onclick="location.href='contact'">Contact</div></li>
                     <li style="float:right;">
                         <div id="cart_icon">
                             <span id="cart_number">0</span>
@@ -168,14 +162,22 @@
 		</div>
     {{end}}
     <!-- Main ========================================= -->
-
-    {{block feature}}
+	{{block feature}}
     {{end}}
-
+    <!-- Begin page content -->
     <div class="container-fluid main-container">
+      {{if left_sidebar_enabled:}}
+        <div class="col-md-3 left-sidebar">
+            {{block left_sidebar}}
+            <h3>Left Sidebar</h3>
+            <p></p>
+            {{end}}
+        </div>
+      {{pass}}
 
       <div class="{{=middle_column}}">
-        {{block body}}
+        {{block center}}
+        {{include}}
         {{end}}
       </div>
 
@@ -190,7 +192,7 @@
 
     </div>
 
-    {{block newsletter}} <!-- Join our Mailing list section -->
+	{{block newsletter}} <!-- Join our Mailing list section -->
         <div class="newsletter-container">
             <div class="newsletter-title"><h4 style="margin: 0;">Love our products? Join our newsletter for special offers!</h4></div>
             <div class="newsletter-form"><input class="newsletter-input" type="text" value="email"><button class="newsletter-button" type="button">Submit</button></div>
@@ -198,24 +200,24 @@
     {{end}}
 
     {{block footer}} <!-- this is default footer -->
-        <footer class="footer">
-          <div class="container-fluid">
-            <div class="copyright pull-left">{{=T('Copyright')}} &#169; {{=request.now.year}}</div>
-              <div id="poweredBy" class="pull-right">
-                Terms of Service | About | Contact
-              </div>
-          </div>
-        </footer>
-    {{end}}
-
+	<footer class="footer">
+	  <div class="container-fluid">
+		  <div class="copyright pull-left">{{=T('Copyright')}} &#169; {{=request.now.year}}</div>
+		  <div id="poweredBy" class="pull-right">
+			Terms of Service | About | Contact
+		  </div>
+	  </div>
+	</footer>
+	{{end}}
     <!-- The javascript =============================== -->
     <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
     <script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
-    <script src="{{=URL('static','js/cartfuncjs.js')}}"></script>
-    <script src="{{=URL('static','js/contactjs.js')}}"></script>
+	<script src="{{=URL('static','js/owl.carousel.js')}}"></script>
+    <script src="{{=URL('static','js/owl.carousel.feature.js')}}"></script>
+    <script src="{{=URL('static','js/carousel.js')}}"></script>
+	<script src="{{=URL('static','js/jquery-1.9.1.min.js')}}"></script>
     {{block page_js}}{{end page_js}}
     {{if response.google_analytics_id:}}
-
     <!-- Analytics ==================================== -->
     <script src="{{=URL('static','js/analytics.min.js')}}"></script>
     <script type="text/javascript">
@@ -224,8 +226,7 @@
       });
     </script>
     {{pass}}
-    <!-- Share ======================================== -->
+    <!-- Share ============================y============ -->
     <script src="{{=URL('static','js/share.js',vars=dict(static=URL('static','images')))}}"></script>
   </body>
-</html>
 </html>
