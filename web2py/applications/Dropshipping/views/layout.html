@@ -24,6 +24,15 @@
     <link rel="stylesheet" href="{{=URL('static','css/web2py-bootstrap3.css')}}"/>
     <link rel="shortcut icon" href="{{=URL('static','images/favicon.ico')}}" type="image/x-icon">
     <link rel="apple-touch-icon" href="{{=URL('static','images/favicon.png')}}">
+<<<<<<< HEAD
+=======
+    <!-- OWL CAROUSEL STYLESHEETS -->
+    <link rel="stylesheet" href="{{=URL('static','css/owl.carousel.css')}}"/>
+    <link rel="stylesheet" href="{{=URL('static','css/owl.theme.css')}}"/>
+    <link rel="stylesheet" href="{{=URL('static','css/style.css')}}"/>
+    <link rel="stylesheet" href="{{=URL('static','css/nav.css')}}"/>
+    <link rel="stylesheet" href="{{=URL('static','css/normal.css')}}"/>
+>>>>>>> master
     <!-- All JavaScript at the bottom, except for Modernizr which enables
          HTML5 elements & feature detects -->
     <script src="{{=URL('static','js/modernizr-2.8.3.min.js')}}"></script>
@@ -71,8 +80,98 @@
     </nav>
     <!-- Masthead ===================================== -->    
     {{block header}}
+<<<<<<< HEAD
     {{end}}
     <!-- Main ========================================= -->
+=======
+		<!-- fixed add to cart alert -->
+            <div id="cart_alert">
+                <div onclick='close_add_cart()' id="close_cart_alert">X</div>
+            </div>
+
+            <div class="header-area" style="width: 100%; height: 125px; background:url('../static/images/top-background.jpg') no-repeat center; background-color:#ffffff;" ></div>
+            <input style="position:absolute; margin-left:80%; top: 135px; z-index:10;" placeholder="Search"/>
+
+			<div class="xs-menu-cont">
+			<a id="menutoggle"><i class="fa fa-align-justify">Toggle</i> </a>
+				<nav class="xs-menu displaynone">
+					<ul>
+						<li class="active">
+							<a href="{{=URL('default','index')}}">Home</a>
+						</li>
+						<li>
+							<a href="{{=URL('views','default/product.html')}}">Product Page<img src="{{=URL('static', 'images/computer_icon.png')}}" alt="Owl Image" width="20" height="20"></a>
+						</li>
+						<li>
+							<a href="{{=URL('views','default/product.html')}}">Services</a>
+						</li>
+						<li>
+							<a href="#">Team</a>
+						</li>
+						<li>
+							<a href="#">Portfolio</a>
+						</li>
+						<li>
+							<a href="#">Blog</a>
+						</li>
+						<li>
+							<a href="#">Contact</a>
+						</li>
+
+					</ul>
+				</nav>
+			</div>
+
+			<nav class="menu" style="">
+				<ul>
+					<li class="active"><a onclick="location.href='index'" href="{{=URL('default','index.html')}}">Home</a></li>
+					<li class="drop-down">
+						<div onclick="location.href='product'">Products</div>
+
+						<div class="mega-menu fadeIn animated">
+						<div class="mm-4column" style="border-right: 1px solid #d3d3d3;">
+                            <span class="left-images">
+                                <img src="{{=URL('static', 'images/tv_drop_down.jpg')}}" alt="Owl Image" >
+                                <div class="view-category" style="width: 175px;"><a href="http://www.google.com/"><strong>View Category</strong></a></div>
+                                <div onclick="" class="view-category" style="width: 175px;"><strong>View Category</strong></div>
+                            </span>
+                            <a href="http://www.google.com/">NEW</a>
+                        </div>
+                        <div class="mm-4column" style="border-right: 1px solid #d3d3d3; margin-left: 25px;">
+                            <span class="left-images">
+                                <img src="{{=URL('static', 'images/computer_drop_down.jpg')}}" alt="Owl Image" >
+                                <div onclick="alert_add_cart()" class="view-category" style="width: 175px;"><strong>View Category</strong></div>
+                            </span>
+                        </div>
+                        <div class="mm-4column" style="border-right: 1px solid #d3d3d3; margin-left: 25px;">
+                            <span class="left-images">
+                                <img src="{{=URL('static', 'images/tablets_drop_down.jpg')}}" alt="Owl Image" >
+                                <div onclick="alert_add_cart()" class="view-category" style="width: 175px;"><strong>View Category</strong></div>
+                            </span>
+                        </div>
+                        <div class="mm-4column" style="margin-left: 25px;">
+                            <span class="left-images">
+                                <img src="{{=URL('static', 'images/gaming_drop_down.jpg')}}" alt="Owl Image" >
+                                <div onclick="alert_add_cart()" class="view-category"><strong>View Category</strong></div>
+                            </span>
+                        </div>
+					</div>
+
+					</li>
+					<li><div onclick="location.href='contact'">Contact</div></li>
+                    <li style="float:right;">
+                        <div id="cart_icon">
+                            <span id="cart_number">0</span>
+                        </div>
+                    </li>
+				</ul>
+			</nav>
+		</div>
+    {{end}}
+    <!-- Main ========================================= -->
+	{{block feature}}
+    {{end}}
+>>>>>>> master
     <!-- Begin page content -->
     <div class="container-fluid main-container">
       {{if left_sidebar_enabled:}}
@@ -101,6 +200,7 @@
 
     </div>
 
+<<<<<<< HEAD
     {{block footer}} <!-- this is default footer -->      
     <footer class="footer">
       <div class="container-fluid">
@@ -115,6 +215,32 @@
     <!-- The javascript =============================== -->
     <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
     <script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
+=======
+	{{block newsletter}} <!-- Join our Mailing list section -->
+        <div class="newsletter-container">
+            <div class="newsletter-title"><h4 style="margin: 0;">Love our products? Join our newsletter for special offers!</h4></div>
+            <div class="newsletter-form"><input class="newsletter-input" type="text" value="email"><button class="newsletter-button" type="button">Submit</button></div>
+        </div>
+    {{end}}
+
+    {{block footer}} <!-- this is default footer -->
+	<footer class="footer">
+	  <div class="container-fluid">
+		  <div class="copyright pull-left">{{=T('Copyright')}} &#169; {{=request.now.year}}</div>
+		  <div id="poweredBy" class="pull-right">
+			Terms of Service | About | Contact
+		  </div>
+	  </div>
+	</footer>
+	{{end}}
+    <!-- The javascript =============================== -->
+    <script src="{{=URL('static','js/bootstrap.min.js')}}"></script>
+    <script src="{{=URL('static','js/web2py-bootstrap3.js')}}"></script>
+	<script src="{{=URL('static','js/owl.carousel.js')}}"></script>
+    <script src="{{=URL('static','js/owl.carousel.feature.js')}}"></script>
+    <script src="{{=URL('static','js/carousel.js')}}"></script>
+	<script src="{{=URL('static','js/jquery-1.9.1.min.js')}}"></script>
+>>>>>>> master
     {{block page_js}}{{end page_js}}
     {{if response.google_analytics_id:}}
     <!-- Analytics ==================================== -->
